@@ -45,7 +45,7 @@ class modExpedAmounts extends DolibarrModules
 
 		// Id for module (must be unique).
 		// Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
-		$this->numero = 500000; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
+		$this->numero = 104053; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
 
 		// Key text used to identify module (for permissions, menus, etc...)
 		$this->rights_class = 'expedamounts';
@@ -393,9 +393,13 @@ class modExpedAmounts extends DolibarrModules
 		if ($result < 0) {
 			return -1; // Do not activate module if error 'not allowed' returned when loading module SQL queries (the _load_table run sql with run_sql with the error allowed parameter set to 'default')
 		}
+		// Create extrafields during init
+		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
+		$extrafields = new ExtraFields($this->db);
+		$result1=$extrafields->addExtraField('total_ht', "TotalHT", 'price', 1,  '24,8', 'expedition', 0, 0, '', '', 0, '$conf->expedamounts->enabled && $user->rights->expedamounts->read', '($conf->expedamounts->enabled && $user->rights->expedamounts->read ? 5 : 0)', '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled', 1);
+		$result2=$extrafields->addExtraField('shippingline_total_ht', "shippingline total ht", 'double', 1, '24,8', 'expeditiondet', 0, 0, '', '', 0, 1, 0, '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled');
+		//$result3=$extrafields->addExtraField('shippingline_qty', "shippingline qty", 'double', 1, '24,8', 'expeditiondet', 0, 0, '', '', 0, 1, 0, '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled');
 
-			// à deplacer dans un script
-		//$this->initExtrafieldsValues();
 		// Permissions
 		$this->remove($options);
 
