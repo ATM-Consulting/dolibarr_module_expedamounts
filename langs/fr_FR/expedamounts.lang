@@ -56,6 +56,7 @@ MyWidgetDescription = My widget description
 
 updateScriptedLineExpedition=Update line price for Expedition : %s <br>
 updateScriptedTotalExpedition= Update price for Expedition : %s <br>
+ExpedAmountsRead=Voir les montants d'expédition
 #
 # ERRORS
 #
