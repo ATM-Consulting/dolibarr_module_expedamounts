@@ -77,3 +77,45 @@ function updateShipping($db, $object,$langs){
 		setEventMessages($langs->trans('errorDeleteLinetotalHtShipping', $object->fk_expedition ),'errors');
 	}
 }
+
+/**
+ * @param $db
+ * @param $scripted
+ * @return void
+ */
+function initExtrafieldsValues($db ,$scripted = false)
+{
+
+
+	$sql = "SELECT e.rowid FROM ".MAIN_DB_PREFIX."expedition e";
+	$sql.= " LEFT JOIN ".MAIN_DB_PREFIX."expedition_extrafields ee on ee.fk_object = e.rowid";
+	$sql.= " WHERE ee.total_ht is null";
+	$sql.= " OR ee.total_ht = 0";
+
+
+	$resql = $db->query($sql);
+	if ($resql)
+	{
+		//echo 'starting script ...<br>';
+		require_once DOL_DOCUMENT_ROOT.'/expedition/class/expedition.class.php';
+
+		while ($obj = $db->fetch_object($resql))
+		{
+			$exped = new Expedition($db);
+			$resfetch = $exped->fetch($obj->rowid);
+			$exped->fetch_lines();
+			if ($resfetch > 0 && !empty($exped->lines))
+			{
+				$ret1 = updateLineShippingTotalPrice($exped, true);
+				$ret2 = updateShippingTotalPrice($exped, true );
+
+				if ($scripted){
+					echo $ret1 . $ret2;
+					flush();
+				}
+
+			}
+		}
+	}
+	//echo 'end of script.';
+}
