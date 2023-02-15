@@ -351,7 +351,7 @@ class modExpedAmounts extends DolibarrModules
 		}
 
 
-		if($this->needUpdate('1.1')) {
+		if($this->needUpdate('1.0')) {
 			require_once (__DIR__ . '/../../lib/expedamounts.lib.php');
 			initExtrafieldsValues($this->db);
 
