@@ -45,7 +45,7 @@ class modExpedAmounts extends DolibarrModules
 
 		// Id for module (must be unique).
 		// Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
-		$this->numero = 500000; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
+		$this->numero = 104053; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
 
 		// Key text used to identify module (for permissions, menus, etc...)
 		$this->rights_class = 'expedamounts';
@@ -72,7 +72,7 @@ class modExpedAmounts extends DolibarrModules
 		$this->editor_url = 'https://www.atm-consulting.fr/';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.0';
+		$this->version = '1.0.0';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -130,7 +130,7 @@ class modExpedAmounts extends DolibarrModules
 		$this->dirs = array("/expedamounts/temp");
 
 		// Config pages. Put here list of php page, stored into expedamounts/admin directory, to use to setup module.
-		$this->config_page_url = array("setup.php@expedamounts");
+		// $this->config_page_url = array("setup.php@expedamounts");
 
 		// Dependencies
 		// A condition to hide module
@@ -277,104 +277,7 @@ class modExpedAmounts extends DolibarrModules
 
 		// Main menu entries to add
 		$this->menu = array();
-		$r = 0;
-		// Add here entries to declare new menus
 
-		/* BEGIN MODULEBUILDER LEFTMENU MYOBJECT
-		$this->menu[$r++]=array(
-			'fk_menu'=>'fk_mainmenu=expedamounts',      // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-			'type'=>'left',                          // This is a Top menu entry
-			'titre'=>'MyObject',
-			'prefix' => img_picto('', $this->picto, 'class="paddingright pictofixedwidth valignmiddle"'),
-			'mainmenu'=>'expedamounts',
-			'leftmenu'=>'myobject',
-			'url'=>'/expedamounts/expedamountsindex.php',
-			'langs'=>'expedamounts@expedamounts',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-			'position'=>1000+$r,
-			'enabled'=>'$conf->expedamounts->enabled',  // Define condition to show or hide menu entry. Use '$conf->expedamounts->enabled' if entry must be visible if module is enabled.
-			'perms'=>'$user->rights->expedamounts->myobject->read',			                // Use 'perms'=>'$user->rights->expedamounts->level1->level2' if you want your menu with a permission rules
-			'target'=>'',
-			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
-		);
-		$this->menu[$r++]=array(
-			'fk_menu'=>'fk_mainmenu=expedamounts,fk_leftmenu=myobject',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-			'type'=>'left',			                // This is a Left menu entry
-			'titre'=>'List_MyObject',
-			'mainmenu'=>'expedamounts',
-			'leftmenu'=>'expedamounts_myobject_list',
-			'url'=>'/expedamounts/myobject_list.php',
-			'langs'=>'expedamounts@expedamounts',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-			'position'=>1000+$r,
-			'enabled'=>'$conf->expedamounts->enabled',  // Define condition to show or hide menu entry. Use '$conf->expedamounts->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-			'perms'=>'$user->rights->expedamounts->myobject->read',			                // Use 'perms'=>'$user->rights->expedamounts->level1->level2' if you want your menu with a permission rules
-			'target'=>'',
-			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
-		);
-		$this->menu[$r++]=array(
-			'fk_menu'=>'fk_mainmenu=expedamounts,fk_leftmenu=myobject',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-			'type'=>'left',			                // This is a Left menu entry
-			'titre'=>'New_MyObject',
-			'mainmenu'=>'expedamounts',
-			'leftmenu'=>'expedamounts_myobject_new',
-			'url'=>'/expedamounts/myobject_card.php?action=create',
-			'langs'=>'expedamounts@expedamounts',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-			'position'=>1000+$r,
-			'enabled'=>'$conf->expedamounts->enabled',  // Define condition to show or hide menu entry. Use '$conf->expedamounts->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-			'perms'=>'$user->rights->expedamounts->myobject->write',			                // Use 'perms'=>'$user->rights->expedamounts->level1->level2' if you want your menu with a permission rules
-			'target'=>'',
-			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
-		);
-		END MODULEBUILDER LEFTMENU MYOBJECT */
-		// Exports profiles provided by this module
-		$r = 1;
-		/* BEGIN MODULEBUILDER EXPORT MYOBJECT */
-		/*
-		$langs->load("expedamounts@expedamounts");
-		$this->export_code[$r]=$this->rights_class.'_'.$r;
-		$this->export_label[$r]='MyObjectLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
-		$this->export_icon[$r]='myobject@expedamounts';
-		// Define $this->export_fields_array, $this->export_TypeFields_array and $this->export_entities_array
-		$keyforclass = 'MyObject'; $keyforclassfile='/expedamounts/class/myobject.class.php'; $keyforelement='myobject@expedamounts';
-		include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
-		//$this->export_fields_array[$r]['t.fieldtoadd']='FieldToAdd'; $this->export_TypeFields_array[$r]['t.fieldtoadd']='Text';
-		//unset($this->export_fields_array[$r]['t.fieldtoremove']);
-		//$keyforclass = 'MyObjectLine'; $keyforclassfile='/expedamounts/class/myobject.class.php'; $keyforelement='myobjectline@expedamounts'; $keyforalias='tl';
-		//include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
-		$keyforselect='myobject'; $keyforaliasextra='extra'; $keyforelement='myobject@expedamounts';
-		include DOL_DOCUMENT_ROOT.'/core/extrafieldsinexport.inc.php';
-		//$keyforselect='myobjectline'; $keyforaliasextra='extraline'; $keyforelement='myobjectline@expedamounts';
-		//include DOL_DOCUMENT_ROOT.'/core/extrafieldsinexport.inc.php';
-		//$this->export_dependencies_array[$r] = array('myobjectline'=>array('tl.rowid','tl.ref')); // To force to activate one or several fields if we select some fields that need same (like to select a unique key if we ask a field of a child to avoid the DISTINCT to discard them, or for computed field than need several other fields)
-		//$this->export_special_array[$r] = array('t.field'=>'...');
-		//$this->export_examplevalues_array[$r] = array('t.field'=>'Example');
-		//$this->export_help_array[$r] = array('t.field'=>'FieldDescHelp');
-		$this->export_sql_start[$r]='SELECT DISTINCT ';
-		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'myobject as t';
-		//$this->export_sql_end[$r]  =' LEFT JOIN '.MAIN_DB_PREFIX.'myobject_line as tl ON tl.fk_myobject = t.rowid';
-		$this->export_sql_end[$r] .=' WHERE 1 = 1';
-		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('myobject').')';
-		$r++; */
-		/* END MODULEBUILDER EXPORT MYOBJECT */
-
-		// Imports profiles provided by this module
-		$r = 1;
-		/* BEGIN MODULEBUILDER IMPORT MYOBJECT */
-		/*
-		 $langs->load("expedamounts@expedamounts");
-		 $this->export_code[$r]=$this->rights_class.'_'.$r;
-		 $this->export_label[$r]='MyObjectLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
-		 $this->export_icon[$r]='myobject@expedamounts';
-		 $keyforclass = 'MyObject'; $keyforclassfile='/expedamounts/class/myobject.class.php'; $keyforelement='myobject@expedamounts';
-		 include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
-		 $keyforselect='myobject'; $keyforaliasextra='extra'; $keyforelement='myobject@expedamounts';
-		 include DOL_DOCUMENT_ROOT.'/core/extrafieldsinexport.inc.php';
-		 //$this->export_dependencies_array[$r]=array('mysubobject'=>'ts.rowid', 't.myfield'=>array('t.myfield2','t.myfield3')); // To force to activate one or several fields if we select some fields that need same (like to select a unique key if we ask a field of a child to avoid the DISTINCT to discard them, or for computed field than need several other fields)
-		 $this->export_sql_start[$r]='SELECT DISTINCT ';
-		 $this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'myobject as t';
-		 $this->export_sql_end[$r] .=' WHERE 1 = 1';
-		 $this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('myobject').')';
-		 $r++; */
-		/* END MODULEBUILDER IMPORT MYOBJECT */
 	}
 
 	/**
@@ -389,13 +292,25 @@ class modExpedAmounts extends DolibarrModules
 	{
 		global $conf, $langs;
 
+		if (empty($conf->expedition->enabled)){
+			$this->error = $langs->trans('NeedShippingModuleActivated');
+			return 0;
+		}
+
 		$result = $this->_load_tables('/expedamounts/sql/');
 		if ($result < 0) {
 			return -1; // Do not activate module if error 'not allowed' returned when loading module SQL queries (the _load_table run sql with run_sql with the error allowed parameter set to 'default')
 		}
 
-			// à deplacer dans un script
-		//$this->initExtrafieldsValues();
+
+		// Create extrafields during init
+		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
+		$extrafields = new ExtraFields($this->db);
+		$result1=$extrafields->addExtraField('total_ht', "TotalHT", 'price', 1,  '24,8', 'expedition', 0, 0, '', '', 0, '$conf->expedamounts->enabled && $user->rights->expedamounts->read', '($conf->expedamounts->enabled && $user->rights->expedamounts->read ? 5 : 0)', '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled', 1);
+		$result2=$extrafields->addExtraField('shippingline_total_ht', "shippingline total ht", 'double', 1, '24,8', 'expeditiondet', 0, 0, '', '', 0, 1, 0, '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled');
+
+
+
 		// Permissions
 		$this->remove($options);
 
@@ -435,6 +350,19 @@ class modExpedAmounts extends DolibarrModules
 			}
 		}
 
+
+		if($this->needUpdate('1.0')) {
+			require_once (__DIR__ . '/../../lib/expedamounts.lib.php');
+			initExtrafieldsValues($this->db);
+
+		}
+		//*************************************
+		// ******* FIN MISE A JOUR BDD ********
+		//*************************************
+
+		// Stock le numéro de verion installé
+		dolibarr_set_const($this->db, 'EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION', $this->version, 'chaine', 0, '', 0);
+
 		return $this->_init($sql, $options);
 	}
 
@@ -451,6 +379,27 @@ class modExpedAmounts extends DolibarrModules
 		$sql = array();
 		return $this->_remove($sql, $options);
 	}
+
+
+	/**
+	 * Compare
+	 *
+	 * @param string $targetVersion numéro de version pour lequel il faut faire la comparaison
+	 * @return bool
+	 */
+	public function needUpdate($targetVersion){
+		global $conf;
+		if (empty($conf->global->EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION)) {
+			return true;
+		}
+
+		if(versioncompare(explode('.',$targetVersion), explode('.', $conf->global->EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION)) > 0){
+			return true;
+		}
+
+		return false;
+	}
+
 }
 
 

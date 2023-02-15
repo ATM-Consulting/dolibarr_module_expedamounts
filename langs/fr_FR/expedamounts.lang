@@ -51,3 +51,21 @@ MyPageName = My page name
 #
 MyWidget = My widget
 MyWidgetDescription = My widget description
+
+
+
+updateScriptedLineExpedition=Update line price for Expedition : %s <br>
+updateScriptedTotalExpedition= Update price for Expedition : %s <br>
+ExpedAmountsRead=Voir les montants d'expédition
+
+#
+# ERRORS
+#
+errorGetOriginOrder=Erreur lors du chargement en mémoire de la commande d'origine : %s
+errorGetShippingDet=Erreur lors du chargement en mémoire de la ligne d'expédition : %s
+errorGetOriginOrder=Erreur=Impossible de charger en mémoire la commande associée : %s .
+errorDeleteLinetotalHtShipping=Erreur lors du chargement en mémoire de l'expédition id : %s, pour la suppression de la ligne.
+NeedShippingModuleActivated=Le module expédition doît être activé pour utiliser le module expedamounts.
+errorFetchOptional=Erreur de chargement des extrafields dans l'objet expédition : %s
+errorLineFetchOptional= Erreur de chargement des extrafields dans la ligne d'expédition : %s
+errorInsertExtrafield=Erreur lors de l'insertion des exrtafields dans la ligne d'expédition %s

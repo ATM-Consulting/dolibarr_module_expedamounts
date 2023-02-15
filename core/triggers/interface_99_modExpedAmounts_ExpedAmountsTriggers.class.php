@@ -33,7 +33,7 @@
  */
 
 require_once DOL_DOCUMENT_ROOT.'/core/triggers/dolibarrtriggers.class.php';
-
+dol_include_once('expedamounts/lib/expedamounts.lib.php');
 
 /**
  *  Class of triggers for ExpedAmounts module
@@ -304,7 +304,32 @@ class InterfaceExpedAmountsTriggers extends DolibarrTriggers
 			//case 'PROJECT_DELETE_RESOURCE':
 
 			// Shipping
+			case 'SHIPPING_CREATE':
+				updateLineShippingTotalPrice($object);
+				updateShippingTotalPrice($object);
+				break;
 
+			case 'LINESHIPPING_UPDATE':
+
+				// dans cette partie nous n'avons pas la fk_origin_line dans l'object (ExpeditionLine)
+				// on créé une copie  pour le recuperer
+				$expedet = new ExpeditionLigne($this->db);
+				$resExpeddet = $expedet->fetch($object->id);
+				if ($resExpeddet > 0) {
+					$object->fk_origin_line = $expedet->fk_origin_line;
+					$obj = new stdClass();
+					$obj->lines = array($object);
+					updateLineShippingTotalPrice($obj);
+					updateShipping($this->db, $object, $langs);
+				}else{
+					setEventMessages($langs->trans('errorGetShippingDet',$object->id),'errors');
+				}
+				break;
+
+		    case 'LINESHIPPING_DELETE':
+
+				updateShipping($this->db, $object, $langs);
+				break;
 			// and more...
 
 			default:
