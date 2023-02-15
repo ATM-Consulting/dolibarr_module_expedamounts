@@ -66,3 +66,6 @@ errorGetShippingDet=Erreur lors du chargement en mémoire de la ligne d'expédit
 errorGetOriginOrder=Erreur=Impossible de charger en mémoire la commande associée : %s .
 errorDeleteLinetotalHtShipping=Erreur lors du chargement en mémoire de l'expédition id : %s, pour la suppression de la ligne.
 NeedShippingModuleActivated=Le module expédition doît être activé pour utiliser le module expedamounts.
+errorFetchOptional=Erreur de chargement des extrafields dans l'objet expédition : %s
+errorLineFetchOptional= Erreur de chargement des extrafields dans la ligne d'expédition : %s
+errorInsertExtrafield=Erreur lors de l'insertion des exrtafields dans la ligne d'expédition %s

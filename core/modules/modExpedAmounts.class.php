@@ -72,7 +72,7 @@ class modExpedAmounts extends DolibarrModules
 		$this->editor_url = 'https://www.atm-consulting.fr/';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.0';
+		$this->version = '1.0.0';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -130,7 +130,7 @@ class modExpedAmounts extends DolibarrModules
 		$this->dirs = array("/expedamounts/temp");
 
 		// Config pages. Put here list of php page, stored into expedamounts/admin directory, to use to setup module.
-		$this->config_page_url = array("setup.php@expedamounts");
+		// $this->config_page_url = array("setup.php@expedamounts");
 
 		// Dependencies
 		// A condition to hide module
