@@ -57,6 +57,7 @@ MyWidgetDescription = My widget description
 updateScriptedLineExpedition=Update line price for Expedition : %s <br>
 updateScriptedTotalExpedition= Update price for Expedition : %s <br>
 ExpedAmountsRead=Voir les montants d'expédition
+
 #
 # ERRORS
 #
@@ -64,4 +65,4 @@ errorGetOriginOrder=Erreur lors du chargement en mémoire de la commande d'origi
 errorGetShippingDet=Erreur lors du chargement en mémoire de la ligne d'expédition : %s
 errorGetOriginOrder=Erreur=Impossible de charger en mémoire la commande associée : %s .
 errorDeleteLinetotalHtShipping=Erreur lors du chargement en mémoire de l'expédition id : %s, pour la suppression de la ligne.
-
+NeedShippingModuleActivated=Le module expédition doît être activé pour utiliser le module expedamounts.

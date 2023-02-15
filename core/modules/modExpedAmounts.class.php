@@ -292,6 +292,11 @@ class modExpedAmounts extends DolibarrModules
 	{
 		global $conf, $langs;
 
+		if (empty($conf->expedition->enabled)){
+			$this->error = $langs->trans('NeedShippingModuleActivated');
+			return 0;
+		}
+
 		$result = $this->_load_tables('/expedamounts/sql/');
 		if ($result < 0) {
 			return -1; // Do not activate module if error 'not allowed' returned when loading module SQL queries (the _load_table run sql with run_sql with the error allowed parameter set to 'default')
