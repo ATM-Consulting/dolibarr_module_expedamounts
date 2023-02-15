@@ -96,7 +96,7 @@ function initExtrafieldsValues($db ,$scripted = false)
 	$resql = $db->query($sql);
 	if ($resql)
 	{
-		//echo 'starting script ...<br>';
+
 		require_once DOL_DOCUMENT_ROOT.'/expedition/class/expedition.class.php';
 
 		while ($obj = $db->fetch_object($resql))
@@ -113,9 +113,8 @@ function initExtrafieldsValues($db ,$scripted = false)
 					echo $ret1 . $ret2;
 					flush();
 				}
-
 			}
 		}
 	}
-	//echo 'end of script.';
+
 }
