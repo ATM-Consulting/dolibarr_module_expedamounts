@@ -310,58 +310,17 @@ class modExpedAmounts extends DolibarrModules
 		$result2=$extrafields->addExtraField('shippingline_total_ht', "shippingline total ht", 'double', 1, '24,8', 'expeditiondet', 0, 0, '', '', 0, 1, 0, '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled');
 
 
-
-		// Permissions
-		$this->remove($options);
-
-		$sql = array();
-
-		// Document templates
-		$moduledir = 'expedamounts';
-		$myTmpObjects = array();
-		$myTmpObjects['MyObject'] = array('includerefgeneration'=>0, 'includedocgeneration'=>0);
-
-		foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
-			if ($myTmpObjectKey == 'MyObject') {
-				continue;
-			}
-			if ($myTmpObjectArray['includerefgeneration']) {
-				$src = DOL_DOCUMENT_ROOT.'/install/doctemplates/expedamounts/template_myobjects.odt';
-				$dirodt = DOL_DATA_ROOT.'/doctemplates/expedamounts';
-				$dest = $dirodt.'/template_myobjects.odt';
-
-				if (file_exists($src) && !file_exists($dest)) {
-					require_once DOL_DOCUMENT_ROOT.'/core/lib/files.lib.php';
-					dol_mkdir($dirodt);
-					$result = dol_copy($src, $dest, 0, 0);
-					if ($result < 0) {
-						$langs->load("errors");
-						$this->error = $langs->trans('ErrorFailToCopyFile', $src, $dest);
-						return 0;
-					}
-				}
-
-				$sql = array_merge($sql, array(
-					"DELETE FROM ".MAIN_DB_PREFIX."document_model WHERE nom = 'standard_".strtolower($myTmpObjectKey)."' AND type = '".strtolower($myTmpObjectKey)."' AND entity = ".$conf->entity,
-					"INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('standard_".strtolower($myTmpObjectKey)."','".strtolower($myTmpObjectKey)."',".$conf->entity.")",
-					"DELETE FROM ".MAIN_DB_PREFIX."document_model WHERE nom = 'generic_".strtolower($myTmpObjectKey)."_odt' AND type = '".strtolower($myTmpObjectKey)."' AND entity = ".$conf->entity,
-					"INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('generic_".strtolower($myTmpObjectKey)."_odt', '".strtolower($myTmpObjectKey)."', ".$conf->entity.")"
-				));
-			}
-		}
-
-
-		if($this->needUpdate('1.0')) {
+		//if($this->needUpdate('1.0')) {
 			require_once (__DIR__ . '/../../lib/expedamounts.lib.php');
 			initExtrafieldsValues($this->db);
 
-		}
+		//}
 		//*************************************
 		// ******* FIN MISE A JOUR BDD ********
 		//*************************************
 
 		// Stock le numéro de verion installé
-		dolibarr_set_const($this->db, 'EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION', $this->version, 'chaine', 0, '', 0);
+		//dolibarr_set_const($this->db, 'EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION', $this->version, 'chaine', 0, '', 0);
 
 		return $this->_init($sql, $options);
 	}

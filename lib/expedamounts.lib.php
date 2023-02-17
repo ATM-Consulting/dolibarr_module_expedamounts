@@ -49,8 +49,8 @@ function updateShippingTotalPrice($object, $scripted = false){
 
 	$langs->load('expedamounts@expedamounts');
 
-	$res = $object->fetchLinesCommon();
-	if ($res > 0 ){
+	//$res = $object->fetchLinesCommon();
+	// if ($res > 0 ){
 		$res = $object->fetch_optionals();
 		if ($res > 0 ) {
 			$cumulHt = 0;
@@ -78,7 +78,7 @@ function updateShippingTotalPrice($object, $scripted = false){
 		}else{
 		  dol_syslog( $langs->trans('errorFetchOptional', $object->id), 'LOG_ERR');
 		}
-	}
+
 	return 0;
 }
 
