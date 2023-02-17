@@ -49,11 +49,10 @@ function updateShippingTotalPrice($object, $scripted = false){
 
 	$langs->load('expedamounts@expedamounts');
 
-	//$res = $object->fetchLinesCommon();
-	// if ($res > 0 ){
 		$res = $object->fetch_optionals();
 		if ($res > 0 ) {
 			$cumulHt = 0;
+			$object->fetch_lines();
 			if (is_array($object->lines) && !empty($object->lines)){
 
 				foreach ($object->lines as $line) {
@@ -73,6 +72,13 @@ function updateShippingTotalPrice($object, $scripted = false){
 					$res = $object->insertExtraFields();
 				}
 				return $scripted ? $langs->trans('updateScriptedTotalExpedition', $object->ref) : '';
+
+			}else{
+
+				if (!empty($object->array_options)) {
+					$object->array_options['options_total_ht'] = 0;
+					$res = $object->insertExtraFields();
+				}
 			}
 
 		}else{

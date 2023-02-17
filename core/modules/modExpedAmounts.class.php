@@ -72,7 +72,7 @@ class modExpedAmounts extends DolibarrModules
 		$this->editor_url = 'https://www.atm-consulting.fr/';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -310,11 +310,10 @@ class modExpedAmounts extends DolibarrModules
 		$result2=$extrafields->addExtraField('shippingline_total_ht', "shippingline total ht", 'double', 1, '24,8', 'expeditiondet', 0, 0, '', '', 0, 1, 0, '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled');
 
 
-		//if($this->needUpdate('1.0')) {
+		if($this->needUpdate('1.0.1')) {
 			require_once (__DIR__ . '/../../lib/expedamounts.lib.php');
 			initExtrafieldsValues($this->db);
-
-		//}
+		}
 		//*************************************
 		// ******* FIN MISE A JOUR BDD ********
 		//*************************************
