@@ -73,12 +73,10 @@ function updateShippingTotalPrice($object, $scripted = false){
 				}
 				return $scripted ? $langs->trans('updateScriptedTotalExpedition', $object->ref) : '';
 
-			}else{
-
-				if (!empty($object->array_options)) {
+			}elseif (!empty($object->array_options)) {
 					$object->array_options['options_total_ht'] = 0;
 					$res = $object->insertExtraFields();
-				}
+
 			}
 
 		}else{
