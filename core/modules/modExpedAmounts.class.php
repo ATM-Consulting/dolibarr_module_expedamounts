@@ -319,7 +319,7 @@ class modExpedAmounts extends DolibarrModules
 		//*************************************
 
 		// Stock le numéro de verion installé
-		//dolibarr_set_const($this->db, 'EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION', $this->version, 'chaine', 0, '', 0);
+		dolibarr_set_const($this->db, 'EXPEDAMOUNTS_MOD_LAST_RELOAD_VERSION', $this->version, 'chaine', 0, '', 0);
 
 		return $this->_init($sql, $options);
 	}
