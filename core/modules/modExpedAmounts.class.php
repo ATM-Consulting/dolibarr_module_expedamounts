@@ -306,7 +306,7 @@ class modExpedAmounts extends DolibarrModules
 		// Create extrafields during init
 		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
-		$result1=$extrafields->addExtraField('total_ht', "TotalHT", 'price', 1,  '24,8', 'expedition', 0, 0, '', '', 0, '$conf->expedamounts->enabled && $user->rights->expedamounts->read', '($conf->expedamounts->enabled && $user->rights->expedamounts->read ? 5 : 0)', '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled', 1);
+		$result1=$extrafields->addExtraField('total_ht', "TotalHT", 'price', 1,  '24,8', 'expedition', 0, 0, '', '', 0, 'global $user; $conf->expedamounts->enabled && $user->rights->expedamounts->read', 'global $user; ($conf->expedamounts->enabled && $user->rights->expedamounts->read ? 5 : 0)', '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled', 1);
 		$result2=$extrafields->addExtraField('shippingline_total_ht', "shippingline total ht", 'double', 1, '24,8', 'expeditiondet', 0, 0, '', '', 0, 1, 0, '', '', 0, 'expedamounts@expedamounts', '$conf->expedamounts->enabled');
 
 
